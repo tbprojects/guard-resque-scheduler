@@ -10,15 +10,16 @@ module Guard
 
     # Allowable options are:
     #  - :environment  e.g. 'test'
-    #  - :task .e.g 'resque:work'
+    #  - :task e.g 'resque:scheduler'
     #  - :verbose e.g. true
-    #  - :trace e.g. true
+    #  - :trace e.g. true 
     #  - :stop_signal e.g. :QUIT or :SIGQUIT
     def initialize(watchers = [], options = {})
       @options = options
       @pid = nil
       @stop_signal = options[:stop_signal] || DEFAULT_SIGNAL
       @options[:task] ||= DEFAULT_TASK
+      @first_start = true
       super
     end
 
@@ -28,7 +29,9 @@ module Guard
       UI.info [ cmd, env.map{|v| v.join('=')} ].join(' ')
 
       # Launch ResqueScheduler
-      @pid = spawn(env, cmd)
+      @first_start ?
+        @first_start = false :
+        @pid = spawn(env, cmd)
     end
 
     def stop
@@ -55,7 +58,7 @@ module Guard
     # Called on Ctrl-Z signal
     def reload
       UI.info 'Restarting resque-scheduler...'
-      restart
+      @pid ? stop : start
     end
 
     # Called on Ctrl-/ signal
@@ -95,4 +98,3 @@ module Guard
     end
   end
 end
-
