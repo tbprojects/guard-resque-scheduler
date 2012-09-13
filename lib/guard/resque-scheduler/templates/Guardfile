@@ -1,0 +1,9 @@
+# guard-resque-scheduler
+#  available options:
+#  - :task (defaults to 'resque:scheduler')
+#  - :verbose (set to anything but false to activate)
+#  - :trace
+#  - :environment (corresponds to RAILS_ENV for the Resque scheduler)
+guard 'resque-scheduler', :environment => 'development' do
+  watch('config/schedule.yml')
+end

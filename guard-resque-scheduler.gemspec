@@ -1,22 +1,23 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "guard/resque/version"
+require "guard/resque-scheduler/version"
 
 Gem::Specification.new do |s|
-  s.name        = "guard-resque"
-  s.version     = Guard::ResqueVersion::VERSION
+  s.name        = "guard-resque-scheduler"
+  s.version     = Guard::ResqueSchedulerVersion::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Jacques Crocker", "Ryan Long", "David Parry", "Jim Deville"]
-  s.email       = ["railsjedi@gmail.com", 'ryan@rtlong.com', 'james.deville@gmail.com']
-  s.homepage    = 'http://github.com/railsjedi/guard-resque'
-  s.summary     = %q{guard gem for resque}
-  s.description = %q{Guard::Resque automatically starts/stops/restarts resque worker}
+  s.authors     = ["Dan Nichols"]
+  s.email       = ["hnipster@gmail.com"]
+  s.homepage    = 'http://github.com/dlnichols/guard-resque-scheduler'
+  s.summary     = %q{guard gem for resque-scheduler}
+  s.description = %q{Guard::Resque automatically starts/stops/restarts resque scheduler}
 
   s.required_rubygems_version = '>= 1.3.6'
-  s.rubyforge_project = "guard-resque"
+  s.rubyforge_project = "guard-resque-scheduler"
 
-  s.add_dependency 'guard', '>= 1.1'
+  s.add_dependency 'guard', '~> 1.0'
   s.add_dependency 'resque'
+  s.add_dependency 'resque-scheduler'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rake'

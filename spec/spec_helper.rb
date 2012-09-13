@@ -1,5 +1,5 @@
 require 'rspec'
-require 'guard/resque'
+require 'guard/resque-scheduler'
 
 ENV['GUARD_ENV'] = 'test'
 
