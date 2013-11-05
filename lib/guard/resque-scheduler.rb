@@ -19,7 +19,6 @@ module Guard
       @pid = nil
       @stop_signal = options[:stop_signal] || DEFAULT_SIGNAL
       @options[:task] ||= DEFAULT_TASK
-      @first_start = true
       super
     end
 
@@ -29,9 +28,7 @@ module Guard
       UI.info [ cmd, env.map{|v| v.join('=')} ].join(' ')
 
       # Launch ResqueScheduler
-      @first_start ?
-        @first_start = false :
-        @pid = spawn(env, cmd)
+      @pid = spawn(env, cmd)
     end
 
     def stop
