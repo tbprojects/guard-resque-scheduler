@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = '>= 1.3.6'
   s.rubyforge_project = "guard-resque-scheduler"
 
-  s.add_dependency 'guard', '~> 1.0'
+  s.add_dependency 'guard', '>= 1.0'
   s.add_dependency 'resque'
   s.add_dependency 'resque-scheduler'
 
