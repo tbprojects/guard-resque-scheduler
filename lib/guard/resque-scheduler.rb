@@ -1,9 +1,9 @@
 require 'guard'
-require 'guard/guard'
+require 'guard/plugin'
 require 'timeout'
 
 module Guard
-  class ResqueScheduler < Guard
+  class ResqueScheduler < Plugin
 
     DEFAULT_SIGNAL = :QUIT
     DEFAULT_TASK = 'resque:scheduler'.freeze
@@ -14,7 +14,7 @@ module Guard
     #  - :verbose e.g. true
     #  - :trace e.g. true 
     #  - :stop_signal e.g. :QUIT or :SIGQUIT
-    def initialize(watchers = [], options = {})
+    def initialize(options = {})
       @options = options
       @pid = nil
       @stop_signal = options[:stop_signal] || DEFAULT_SIGNAL
